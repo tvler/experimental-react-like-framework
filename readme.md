@@ -6,6 +6,10 @@ JSX immediately requires a complex build environment. Differences between HTML i
 
 <img width="426" src="https://user-images.githubusercontent.com/4934193/85815984-d5ace080-b71e-11ea-9231-8ee97584096b.png">
 
+## Bet: React.createElement is bad
+
+Using React without JSX forces you to use the React.createElement API. Building a complex template with React.createElement ends up as a deeply-nested function call with no breakpoints at the very bottom of your component code. JSX is an attempt to make this format more presentable, but it doesn't solve the underlying issue that your template is inside of a function call, with no access to if-statements, for-loops, etc.
+
 ## Bet: Code based off of insertion-order is good
 
 Facebook built hooks around insertion-order and received major backlash by the engineering community, but resulted in few actual real-world problems.
