@@ -26,7 +26,7 @@ const App = () => {
   const handleClick = () => {
     setCounter(counter + 1);
   };
-  button({ type: "button", onClick: handleClick }, counter);
+  button({ onClick: handleClick }, counter);
 
   // On ordered list counting up from 0 to 9
   ol(null, () => {
@@ -56,9 +56,7 @@ const JSXApp = () => {
       <h1>Hello world!</h1>
 
       {/* The counter's rendering code (not collocated) */}
-      <button onClick={handleClick} type="button">
-        {counter}
-      </button>
+      <button onClick={handleClick}>{counter}</button>
 
       {/* An ordered list counting up from 0 to 9 */}
       <ol>
