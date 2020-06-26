@@ -32,7 +32,7 @@ const App = () => {
   };
   button({ onClick: handleClick }, counter);
 
-  // On ordered list counting up from 0 to 9
+  // An ordered list counting up from 0 to 9
   ol(null, () => {
     for (let i = 0; i < 10; i++) {
       li({ key: i }, i);
