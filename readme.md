@@ -23,13 +23,14 @@ An exploration of what react would look like if execution-order-based code wasnâ
  * New syntax
  */
 const App = () => {
-  h1(null, "Hello world!");
-
-  // A counter's state, updater and rendering code
   const [counter, setCounter] = useState(0);
   const handleClick = () => {
     setCounter(counter + 1);
   };
+
+  h1(null, "Hello world!");
+
+  // A button with an onClick prop
   button({ onClick: handleClick }, counter);
 
   // An ordered list counting up from 0 to 9
@@ -49,7 +50,6 @@ const App = () => {
  * Old JSX syntax
  */
 const JSXApp = () => {
-  // A counter's state and updater code
   const [counter, setCounter] = useState(0);
   const handleClick = () => {
     setCounter(counter + 1);
@@ -59,7 +59,7 @@ const JSXApp = () => {
     <>
       <h1>Hello world!</h1>
 
-      {/* The counter's rendering code (not collocated) */}
+      {/* A button with an onClick prop */}
       <button onClick={handleClick}>{counter}</button>
 
       {/* An ordered list counting up from 0 to 9 */}
@@ -77,8 +77,6 @@ const JSXApp = () => {
 ```
 
 ## Benefits
-
-Collocation of business logic and UI (useState is below an h1 element)
 
 Simpler code for loops and conditional rendering
 
