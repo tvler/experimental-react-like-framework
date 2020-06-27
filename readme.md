@@ -93,3 +93,5 @@ No need for fragments
 ## How it works
 
 Each primitive HTML element function pings a global store when called. The order of the pings determines the order in which the actual HTML elements are rendered to the dom. This is the exact same architecture that Facebook has proven successful with react hooks.
+
+This has the potential to work directly within React itself, turning into a series of React.createElement calls on execution. Making this an experimental new frontend for React, with the added benefits of gradual adoption and an already-existing suite of developer tools to build off of.
