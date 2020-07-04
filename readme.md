@@ -16,6 +16,22 @@ const App = () => {
 };
 ```
 
+The framework is hosted on React itself. Designed to be incrementally adopted inside of a React subtree without interfering with any existing code.
+
+```tsx
+import { NewFramework } from "./NewFramework";
+import { NewFrameworkApp } from "./NewFrameworkApp";
+
+const App = () => (
+  <YourExistingReactApp>
+    <YourExistingReactComponent />
+
+    {/* ❇️ 🆕 ❇️ */}
+    <NewFramework root={NewFrameworkApp} />
+  </YourReactApp>
+);
+```
+
 ## Table of contents
 
 - [Framework write-up](#framework-write-up)
