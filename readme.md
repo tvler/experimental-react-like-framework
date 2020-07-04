@@ -16,7 +16,7 @@ const App = () => {
 };
 ```
 
-The framework is hosted on React itself. Designed to be incrementally adopted inside of a React subtree without interfering with any existing code.
+The framework is hosted on React itself. Designed to be incrementally adopted inside of a React subtree without interfering with any existing code, with the benefit of all of React's features and ecosystem.
 
 ```tsx
 import { NewFramework } from "./NewFramework";
