@@ -1,5 +1,13 @@
 # experimental-react-like-framework
 
+A new, experimental frontend for React based off the the questions:
+
+① What would React look like if execution-order-based code wasn't only used for hooks, but for all platform features?
+
+② What would React look like if JSX never existed?
+
+Inspired by SwiftUI and in development.
+
 ## Table of contents
 
 - [Framework write-up](#framework-write-up)
