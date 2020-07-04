@@ -4,7 +4,7 @@ A new, experimental frontend for React inspired by SwiftUI. In development.
 
 Based off of two big questions:
 
-① What would React look like if execution-order-based code wasn't used only for hooks, but for all framework features?
+① What would React look like if execution-order-based code wasn't used only for hooks, but for everything?
 
 ② What would React look like if JSX never existed?
 
