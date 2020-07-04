@@ -26,7 +26,7 @@ const App = () => (
   <YourExistingReactApp>
     <YourExistingReactComponent />
 
-    {/* ❇️ 🆕 ❇️ */}
+    {/* 🆕 */}
     <NewFramework root={NewFrameworkApp} />
   </YourReactApp>
 );
