@@ -1,16 +1,15 @@
 import React from "react";
-type RenderablePrimitive = boolean | null | undefined | string | number;
-type RenderableComponentProps<T extends keyof JSX.IntrinsicElements> =
-  | JSX.IntrinsicElements[T]
-  | null;
+
 type RenderableComponent<T extends keyof JSX.IntrinsicElements> = (
-  props: RenderableComponentProps<T>,
-  children: (() => void) | RenderablePrimitive
+  props: JSX.IntrinsicElements[T] | null,
+  children: (() => void) | (boolean | null | undefined | string | number)
 ) => void;
+
 enum StackConstants {
   BEGIN_PARENT,
   END_PARENT,
 }
+
 type StackItem =
   | {
       name: keyof JSX.IntrinsicElements;
@@ -18,9 +17,10 @@ type StackItem =
     }
   | StackConstants;
 
-const stack: StackItem[] = [];
+let stack: StackItem[] = [];
 
 export const FrameworkHost: React.FC<{ root: () => void }> = ({ root }) => {
+  stack = [];
   root();
 
   let index = 0;
@@ -40,7 +40,7 @@ export const FrameworkHost: React.FC<{ root: () => void }> = ({ root }) => {
         break;
       } else {
         const props = {
-          key: index.toString(),
+          key: index,
           ...stackItem.props,
         };
         if (prevStackItem === StackConstants.BEGIN_PARENT) {
@@ -57,7 +57,6 @@ export const FrameworkHost: React.FC<{ root: () => void }> = ({ root }) => {
   };
 
   reactNode = buildNodePartial();
-  console.log(reactNode);
   return React.createElement(React.Fragment, null, reactNode);
 };
 
@@ -87,3 +86,6 @@ export const h1 = renderableComponentFactory("h1");
 export const div = renderableComponentFactory("div");
 export const span = renderableComponentFactory("span");
 export const a = renderableComponentFactory("a");
+export const button = renderableComponentFactory("button");
+export const ol = renderableComponentFactory("ol");
+export const li = renderableComponentFactory("li");

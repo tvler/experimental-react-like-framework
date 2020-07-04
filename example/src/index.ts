@@ -1,11 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import { FrameworkHost } from "./Framework";
+import root from "./root";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  React.createElement(FrameworkHost, { root }),
   document.getElementById("root")
 );
