@@ -1,58 +1,10 @@
 # experimental-react-like-framework
 
-## What I've built so far
+## Table of contents
 
-### ✅ Everything except state
-
-[example-create-react-app/src/app.ts](example-create-react-app/src/app.ts)
-
-```ts
-import { button, h1, ol, li } from "./Framework";
-
-const app = () => {
-  h1(null, "Hello world!");
-
-  // A button with an onClick prop
-  button(
-    {
-      onClick: () => {
-        alert("clicked!");
-      },
-    },
-    "Click"
-  );
-
-  // An ordered list counting up from 0 to 9
-  ol(null, () => {
-    for (let i = 0; i < 10; i++) {
-      li(null, i);
-    }
-  });
-};
-
-export default app;
-```
-
-### ✅ Building on top of React
-
-[example-create-react-app/src/index.ts](example-create-react-app/src/index.ts)
-
-```ts
-import React from "react";
-import ReactDOM from "react-dom";
-import { Framework } from "./Framework";
-import app from "./app";
-
-ReactDOM.render(
-  React.createElement(Framework, { root: app }),
-  document.getElementById("root")
-);
-```
-
-## What needs to be built
-
-- [ ] Multiple Framework hosts being rendered in a React tree
-- [ ] State
+- [Framework write-up](#framework-write-up)
+- [What I've built so far](#what-ive-built-so-far)
+- [What needs to be built](#what-needs-to-be-built)
 
 ## Framework write-up
 
@@ -151,3 +103,65 @@ No need for fragments
 Each primitive HTML element function pings a global store when called. The order of the pings determines the order in which the actual HTML elements are rendered to the dom. This is the exact same architecture that Facebook has proven successful with react hooks.
 
 This has the potential to work directly within React itself, turning into a series of React.createElement calls on execution. Making this an experimental new frontend for React, with the added benefits of gradual adoption and an already-existing suite of developer tools to build off of.
+
+## What I've built so far
+
+### ✅ Working prototype
+
+```
+cd example-create-react-app
+yarn
+yarn start
+```
+
+### ✅ Everything except state
+
+[example-create-react-app/src/app.ts](example-create-react-app/src/app.ts)
+
+```ts
+import { button, h1, ol, li } from "./Framework";
+
+const app = () => {
+  h1(null, "Hello world!");
+
+  // A button with an onClick prop
+  button(
+    {
+      onClick: () => {
+        alert("clicked!");
+      },
+    },
+    "Click"
+  );
+
+  // An ordered list counting up from 0 to 9
+  ol(null, () => {
+    for (let i = 0; i < 10; i++) {
+      li(null, i);
+    }
+  });
+};
+
+export default app;
+```
+
+### ✅ Building on top of React
+
+[example-create-react-app/src/index.ts](example-create-react-app/src/index.ts)
+
+```ts
+import React from "react";
+import ReactDOM from "react-dom";
+import { Framework } from "./Framework";
+import app from "./app";
+
+ReactDOM.render(
+  React.createElement(Framework, { root: app }),
+  document.getElementById("root")
+);
+```
+
+## What needs to be built
+
+- [ ] Multiple Framework hosts being rendered in a React tree
+- [ ] State
