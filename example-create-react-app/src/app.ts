@@ -1,6 +1,6 @@
 import { button, h1, ol, li } from "./Framework";
 
-const root = () => {
+const app = () => {
   h1(null, "Hello world!");
 
   // A button with an onClick prop
@@ -21,4 +21,4 @@ const root = () => {
   });
 };
 
-export default root;
+export default app;

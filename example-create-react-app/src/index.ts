@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import { FrameworkHost } from "./Framework";
-import root from "./root";
+import { Framework } from "./Framework";
+import app from "./app";
 
 ReactDOM.render(
-  React.createElement(FrameworkHost, { root }),
+  React.createElement(Framework, { root: app }),
   document.getElementById("root")
 );

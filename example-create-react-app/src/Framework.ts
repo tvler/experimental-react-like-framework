@@ -19,7 +19,7 @@ type StackItem =
 
 let stack: StackItem[] = [];
 
-export const FrameworkHost: React.FC<{ root: () => void }> = ({ root }) => {
+export const Framework: React.FC<{ root: () => void }> = ({ root }) => {
   stack = [];
   root();
 
