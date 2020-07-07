@@ -24,9 +24,8 @@ export const Framework: React.FC<{ root: () => void }> = ({ root }) => {
   root();
 
   let index = 0;
-  let reactNode: React.ReactNode[] = [];
 
-  const buildNodePartial = () => {
+  const buildNodePartial = (): React.ReactNode[] => {
     const partialReactNode: React.ReactNode[] = [];
 
     while (index < stack.length) {
@@ -56,8 +55,7 @@ export const Framework: React.FC<{ root: () => void }> = ({ root }) => {
     return partialReactNode;
   };
 
-  reactNode = buildNodePartial();
-  return React.createElement(React.Fragment, null, reactNode);
+  return React.createElement(React.Fragment, null, buildNodePartial());
 };
 
 const renderableComponentFactory = <T extends keyof JSX.IntrinsicElements>(
