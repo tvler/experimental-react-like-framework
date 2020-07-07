@@ -5,6 +5,10 @@ type RenderableComponent<T extends keyof JSX.IntrinsicElements> = (
   children: (() => void) | (boolean | null | undefined | string | number)
 ) => void;
 
+enum HookConstants {
+  USE_STATE,
+}
+
 enum StackConstants {
   BEGIN_PARENT,
   END_PARENT,
@@ -15,7 +19,8 @@ type StackItem =
       name: keyof JSX.IntrinsicElements;
       props: any;
     }
-  | StackConstants;
+  | StackConstants
+  | [HookConstants.USE_STATE, [any, (newValue: any) => void]];
 
 let stack: StackItem[] = [];
 
@@ -37,6 +42,10 @@ export const Framework: React.FC<{ root: () => void }> = ({ root }) => {
         continue;
       } else if (stackItem === StackConstants.END_PARENT) {
         break;
+      } else if (Array.isArray(stackItem)) {
+        if (stackItem[0] === HookConstants.USE_STATE) {
+          // ...
+        }
       } else {
         const props = {
           key: index,
@@ -56,6 +65,12 @@ export const Framework: React.FC<{ root: () => void }> = ({ root }) => {
   };
 
   return React.createElement(React.Fragment, null, buildNodePartial());
+};
+
+export const useState = <T>(value: T): [T, (newValue: T) => void] => {
+  const tuple: [T, (newValue: T) => void] = [value, () => {}];
+  stack.push([HookConstants.USE_STATE, tuple]);
+  return tuple;
 };
 
 const renderableComponentFactory = <T extends keyof JSX.IntrinsicElements>(
@@ -79,7 +94,6 @@ const renderableComponentFactory = <T extends keyof JSX.IntrinsicElements>(
     });
   }
 };
-
 export const h1 = renderableComponentFactory("h1");
 export const div = renderableComponentFactory("div");
 export const span = renderableComponentFactory("span");
