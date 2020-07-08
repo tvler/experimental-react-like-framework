@@ -75,7 +75,7 @@ export const useState = <T>(value: T): [T, (newValue: T) => void] => {
 const tagFactory = <T extends keyof JSX.IntrinsicElements>(tagName: T) => {
   function tag<T extends keyof JSX.IntrinsicElements>(
     props: JSX.IntrinsicElements[T] | null,
-    children: TagChildren
+    children?: TagChildren
   ): void;
   function tag<T extends keyof JSX.IntrinsicElements>(
     children: TagChildren,
@@ -130,3 +130,8 @@ export const a = tagFactory("a");
 export const button = tagFactory("button");
 export const ol = tagFactory("ol");
 export const li = tagFactory("li");
+export const form = tagFactory("form");
+export const fieldset = tagFactory("fieldset");
+export const input = tagFactory("input");
+export const p = tagFactory("p");
+export const label = tagFactory("label");
