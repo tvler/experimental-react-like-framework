@@ -37,6 +37,7 @@ const App = () => (
 - [Framework write-up](#framework-write-up)
 - [What I've built so far](#what-ive-built-so-far)
 - [What needs to be built](#what-needs-to-be-built)
+- [Further reading](#further-reading)
 
 ## Framework write-up
 
@@ -44,7 +45,7 @@ const App = () => (
 
 JSX immediately requires a complex build environment. Differences between HTML is small but painful for beginners. Sebastian Markbåge (a lead react maintainer) tweeted that JSX is a bug.
 
-<img width="426" src="https://user-images.githubusercontent.com/4934193/85815984-d5ace080-b71e-11ea-9231-8ee97584096b.png">
+<img width="426" src="https://user-images.githubusercontent.com/4934193/85815984-d5ace080-b71e-11ea-9231-8ee97584096b.png"> ([twitter.com/sebmarkbage/status/1255886278437945344](https://twitter.com/sebmarkbage/status/1255886278437945344))
 
 ### Bet: React.createElement is bad
 
@@ -198,3 +199,9 @@ ReactDOM.render(
 - [ ] Multiple Framework hosts being rendered in a React tree
 - [ ] State
 - [ ] A cool project name ;)
+
+## Further reading
+
+[Function builders (draft proposal)](https://github.com/apple/swift-evolution/blob/9992cf3c11c2d5e0ea20bee98657d93902d5b174/proposals/XXXX-function-builders.md) by [John McCall](https://github.com/rjmccall) and [Doug Gregor](http://github.com/DougGregor)
+
+[js-dsl](https://venkatperi.github.io/js-dsl/) by [Venkat Peri](https://github.com/venkatperi)
