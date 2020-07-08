@@ -78,7 +78,8 @@ const tagFactory = <T extends keyof JSX.IntrinsicElements>(tagName: T) => {
     children: TagChildren
   ): void;
   function tag<T extends keyof JSX.IntrinsicElements>(
-    children: TagChildren
+    children: TagChildren,
+    secondParameter?: undefined
   ): void;
   function tag(
     propsOrChildren: JSX.IntrinsicElements[T] | TagChildren | null,
