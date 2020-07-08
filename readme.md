@@ -12,7 +12,7 @@ Hello World app:
 
 ```ts
 const App = () => {
-  h1(null, "Hello world!");
+  h1("Hello world!");
 };
 ```
 
@@ -69,13 +69,13 @@ const App = () => {
     setCounter(counter + 1);
   };
 
-  h1(null, "Hello world!");
+  h1("Hello world!");
 
   // A button with an onClick prop
   button({ onClick: handleClick }, counter);
 
   // An ordered list counting up from 0 to 9
-  ol(null, () => {
+  ol(() => {
     for (let i = 0; i < 10; i++) {
       li({ key: i }, i);
     }
@@ -83,7 +83,7 @@ const App = () => {
 
   // Conditionally rendering a span if counter is odd
   if (counter % 2) {
-    span(null, "counter is an odd number.");
+    span("counter is an odd number.");
   }
 };
 
@@ -155,7 +155,7 @@ yarn start
 import { button, h1, ol, li } from "./Framework";
 
 const app = () => {
-  h1(null, "Hello world!");
+  h1("Hello world!");
 
   // A button with an onClick prop
   button(
@@ -168,9 +168,9 @@ const app = () => {
   );
 
   // An ordered list counting up from 0 to 9
-  ol(null, () => {
+  ol(() => {
     for (let i = 0; i < 10; i++) {
-      li(null, i);
+      li(i);
     }
   });
 };

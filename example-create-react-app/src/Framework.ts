@@ -1,9 +1,8 @@
 import React from "react";
 
-type RenderableComponent<T extends keyof JSX.IntrinsicElements> = (
-  props: JSX.IntrinsicElements[T] | null,
-  children: (() => void) | (boolean | null | undefined | string | number)
-) => void;
+type TagChildren =
+  | (() => void)
+  | (boolean | null | undefined | string | number);
 
 enum HookConstants {
   USE_STATE,
@@ -73,31 +72,60 @@ export const useState = <T>(value: T): [T, (newValue: T) => void] => {
   return tuple;
 };
 
-const renderableComponentFactory = <T extends keyof JSX.IntrinsicElements>(
-  tag: T
-): RenderableComponent<T> => (props, children) => {
-  if (typeof children === "function") {
-    stack.push(StackConstants.BEGIN_PARENT);
-    stack.push({
-      name: tag,
-      props,
-    });
-    children();
-    stack.push(StackConstants.END_PARENT);
-  } else {
-    stack.push({
-      name: tag,
-      props: {
-        ...props,
-        children,
-      },
-    });
+const tagFactory = <T extends keyof JSX.IntrinsicElements>(tagName: T) => {
+  function tag<T extends keyof JSX.IntrinsicElements>(
+    props: JSX.IntrinsicElements[T] | null,
+    children: TagChildren
+  ): void;
+  function tag<T extends keyof JSX.IntrinsicElements>(
+    children: TagChildren
+  ): void;
+  function tag(
+    propsOrChildren: JSX.IntrinsicElements[T] | TagChildren | null,
+    childrenOrUndefined?: TagChildren
+  ) {
+    let children: TagChildren;
+    let props: JSX.IntrinsicElements[T] | null;
+
+    if (
+      typeof propsOrChildren === "string" ||
+      typeof propsOrChildren === "number" ||
+      typeof propsOrChildren === "boolean" ||
+      typeof propsOrChildren === "function" ||
+      propsOrChildren === undefined
+    ) {
+      props = null;
+      children = propsOrChildren;
+    } else {
+      props = propsOrChildren;
+      children = childrenOrUndefined;
+    }
+
+    if (typeof children === "function") {
+      stack.push(StackConstants.BEGIN_PARENT);
+      stack.push({
+        name: tagName,
+        props,
+      });
+      children();
+      stack.push(StackConstants.END_PARENT);
+    } else {
+      stack.push({
+        name: tagName,
+        props: {
+          ...props,
+          children,
+        },
+      });
+    }
   }
+
+  return tag;
 };
-export const h1 = renderableComponentFactory("h1");
-export const div = renderableComponentFactory("div");
-export const span = renderableComponentFactory("span");
-export const a = renderableComponentFactory("a");
-export const button = renderableComponentFactory("button");
-export const ol = renderableComponentFactory("ol");
-export const li = renderableComponentFactory("li");
+export const h1 = tagFactory("h1");
+export const div = tagFactory("div");
+export const span = tagFactory("span");
+export const a = tagFactory("a");
+export const button = tagFactory("button");
+export const ol = tagFactory("ol");
+export const li = tagFactory("li");
