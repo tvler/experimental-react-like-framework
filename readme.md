@@ -131,6 +131,8 @@ No need for closing tags
 
 No need for fragments
 
+Easier to comment elements out
+
 ### How it works
 
 Each primitive HTML element function pings a global store when called. The order of the pings determines the order in which the actual HTML elements are rendered to the dom. This is the exact same architecture that Facebook has proven successful with react hooks.
@@ -196,9 +198,8 @@ ReactDOM.render(
 
 ## What needs to be built
 
-- [ ] Multiple Framework hosts being rendered in a React tree
 - [ ] State
-- [ ] A cool project name ;)
+- [ ] A cool project name ;) https://github.com/tvler/experimental-react-like-framework/issues/4
 
 ## Further reading
 
