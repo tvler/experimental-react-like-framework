@@ -206,3 +206,5 @@ ReactDOM.render(
 [Function builders (draft proposal)](https://github.com/apple/swift-evolution/blob/9992cf3c11c2d5e0ea20bee98657d93902d5b174/proposals/XXXX-function-builders.md) by [John McCall](https://github.com/rjmccall) and [Doug Gregor](http://github.com/DougGregor)
 
 [js-dsl](https://venkatperi.github.io/js-dsl/) by [Venkat Peri](https://github.com/venkatperi)
+
+[incremental-dom](http://google.github.io/incremental-dom/) by Google
